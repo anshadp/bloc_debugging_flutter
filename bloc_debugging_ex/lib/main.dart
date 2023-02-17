@@ -1,5 +1,11 @@
+import 'package:bloc_debugging_ex/data/repository/joke_repository.dart';
 import 'package:bloc_debugging_ex/presentation/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -16,7 +22,10 @@ class MyApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
       ),
-      home: const Home(),
+      home: RepositoryProvider(
+        create: (context) => JokeRepository(),
+        child: Home(),
+      ),
     );
   }
 }
